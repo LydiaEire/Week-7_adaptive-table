@@ -1,0 +1,130 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr; 
+  grid-template-rows: auto 1fr auto; 
+  min-height: 100vh;
+}
+
+header {
+  background-color: #e0e0e0;
+  border: 1px solid;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas: 
+    'main-box main-box aside'
+    'second-box1 second-box2 aside'
+    'box-extra box-extra aside';
+  gap: 20px 10px;
+  margin: 10px;
+}
+
+
+.main-box {
+  grid-column: 1 / span 2; 
+  grid-area: main-box;
+  text-align: center;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.second-box1 {
+  grid-column: 1; 
+  display: grid;
+  grid-area: second-box1;
+  text-align: center;
+  padding: 10px;
+  background-color: #feeab9;
+}
+
+.second-box2{
+  display: grid;
+  grid-column: 2; 
+  grid-area: second-box2;
+  text-align: center;
+  padding: 10px;
+  background-color: #feeab9;
+}
+
+.box-extra {
+  grid-column: 1 / span 2; 
+  grid-area: box-extra;
+  text-align: center;
+  padding: 10px;
+  background-color: #feeab9;
+}
+
+aside {
+  grid-area: aside;
+  border: 1px solid;
+  text-align: center;
+  padding: 10px;
+  background-color: #ddeccb;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  justify-content: space-around;
+  align-items: center;
+  background-color: #e0e0e0;
+  
+}
+
+.footer-box {
+  background-color: #fafafa;
+  padding: 10px;
+  margin: 10px;
+  min-height: 80px;
+  width: 70%; 
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .grid-container {
+    display: block;
+  }
+
+  .main-box,
+  .second-box1,
+  .second-box2,
+  .box-extra,
+  aside {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns layout */
+    gap: 20px;
+  }
+
+  .main-box {
+    grid-column: span 2; /* Spans across two columns */
+  }
+
+  .second-box1,
+  .second-box2 {
+    grid-column: span 1; /* Each item takes one column */
+  }
+
+  aside {
+    order: -1; /* Moves the sidebar (aside) to the start for larger screens */
+  }
+}
